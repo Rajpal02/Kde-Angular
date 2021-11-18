@@ -1,0 +1,77 @@
+<div>
+<h2>Input Options-</h2>
+<mat-card>
+<mat-form-field appearance="fill" color="accent">
+  <mat-label>Select an Option</mat-label>
+  <mat-select [(ngModel)]="optionSelected">
+    <mat-option *ngFor="let option of healthcareOptions" [value]="option">
+      {{option}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<mat-form-field class="disease" appearance="fill" *ngIf="optionSelected=='Diseases'" color="accent">
+  <mat-label>Select an Option</mat-label>
+  <mat-select [(ngModel)]="diseaseSelected">
+    <mat-option *ngFor="let disease of diseases" [value]="disease">
+      {{disease}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<mat-form-field class="medicine" appearance="fill" *ngIf="optionSelected=='Medicines'" color="accent">
+  <mat-label>Select an Option</mat-label>
+  <mat-select [(ngModel)]="medicineSelected">
+    <mat-option *ngFor="let medicine of medicines" [value]="medicine">
+      {{medicine}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<mat-form-field class="symptom" appearance="fill" *ngIf="optionSelected=='Symptoms'" color="accent">
+  <mat-label>Select an Option</mat-label>
+  <mat-select multiple [(ngModel)]="symptomSelected">
+    <mat-option *ngFor="let symptom of symptoms" [value]="symptom">
+      {{symptom}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<mat-form-field class="med_com" appearance="fill" *ngIf="optionSelected=='Medicine Compositions'" color="accent">
+  <mat-label>Select an Option</mat-label>
+  <mat-select [(ngModel)]="medcompositionSelected">
+    <mat-option *ngFor="let med_com of medicineCompositionArray" [value]="med_com">
+      {{med_com}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+</mat-card>
+</div>
+<div>
+<h2>Output Options-</h2>
+<mat-card>
+  <mat-form-field appearance="fill" color="accent">
+    <mat-label>Select an Output</mat-label>
+    <mat-select multiple [(ngModel)]="outputSelected">
+      <mat-option *ngFor="let option of newOutputArray" [value]="option">
+        {{option}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</mat-card>
+</div>
+<div class=container>
+<button class="button1"
+    mat-raised-button
+    [disabled]="optionSelected==='' || outputSelected.length<1"
+    color="accent"
+    (click)="onsendData()">Send Data
+  </button>
+</div>
+<hr>
+<div>
+<h2>Results</h2>
+<mat-card>
+  <p *ngFor="let i of resultsArray, index as j">{{j+1}}. {{ i }}</p>
+</mat-card>

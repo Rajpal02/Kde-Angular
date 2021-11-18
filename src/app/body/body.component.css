@@ -1,0 +1,14 @@
+
+:host, h2 {
+  display: block;
+  margin-top: 1rem;
+}
+
+.disease, .medicine, .symptom, .med_com {
+  margin-left: 150px;
+}
+
+.container {
+  margin-top: 1rem;
+  text-align: center;
+}
